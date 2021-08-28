@@ -1,0 +1,12 @@
+.div {
+    margin: 0;
+}
+.li {
+  display: inline-block;
+  margin: 1rem;
+  color: white;
+}
+.nav{
+  list-style-type: none;
+  background-color: #6b3651;
+}

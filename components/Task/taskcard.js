@@ -77,7 +77,7 @@ function Card(props) {
         <p>{props.description}</p>
         <div className={regclasses.btnHolder}><button onClick={editHandler} className={regclasses.btn}>Edit</button></div>
       </div>
-      {showEdit && <EditForm onclick={removeHandler} tid={taskId} title={props.title} description={props.description} />}
+      {showEdit && <EditForm onclick={removeHandler} tid={taskId} title={props.title} description={props.description} catId={props.catId} />}
       {showBackdrop && <Backdrop />}
     </div>
   );

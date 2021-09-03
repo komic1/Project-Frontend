@@ -2,6 +2,7 @@ import  Link from "next/link";
 import classes from '../../styles/navbar.module.css'
 
 function Navbar(props) {
+
   return (
     <div className={classes.div}>
         <nav className={classes.nav}>
@@ -9,11 +10,8 @@ function Navbar(props) {
         <li className={classes.li}>
           <Link href="/dashboard">Dashboard</Link>
         </li>
-        <li className={classes.li} >
-          <Link href="/signup">Sign Up</Link>
-        </li>
         <li className={classes.li}>
-          <Link href="/login">Login</Link>
+          <Link href="/logout" onClick={props.handler}>Logout</Link>
         </li>
       </ul>
       </nav>

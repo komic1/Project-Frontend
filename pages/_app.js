@@ -5,9 +5,7 @@ import "../styles/globals.css";
 //document.body.style.backgroundColor="rgba(176, 194, 13, 0.527)";
 function MyApp({ Component, pageProps }) {
   return (
-      <Navbar>
         <Component {...pageProps} />
-      </Navbar>
   );
 }
 

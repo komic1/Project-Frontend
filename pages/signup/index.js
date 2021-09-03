@@ -29,11 +29,10 @@ function Signup() {
     }).then(response => {
       return response.json();
     }).then(data => {
-      console.log(data)
     }).catch(err => console.log(err));
 
     alert('You have successfully registered to Tasks!\n Please log in');
-    window.location ='http://localhost:3000/login'
+    window.location ='http://localhost:3000/dashboard'
   }
 
   return (

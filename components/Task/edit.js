@@ -9,7 +9,7 @@ function EditForm(props) {
   const enteredTitle = useRef();
   const enteredDescription = useRef();
   const selectedItem = useRef();
-
+  
 
   function cancelHandler() {
     props.onclick();
@@ -26,10 +26,19 @@ function EditForm(props) {
       description: description,
       categoryId : selected
     };
+
+    const reqBodyCat = {
+      catId: selected,
+      sendingCatId : props.catId
+    }
     event.preventDefault();
 
       fetch("http://localhost:8080/edit-task/"+`${props.tid}`,{
-        method: 'PUT'
+        method: 'PUT',
+        body: JSON.stringify(reqBody),
+        headers : {
+          'Content-Type' : 'application/json'
+        }
       }).then((res) => {
         return res.json();
       })
@@ -39,6 +48,21 @@ function EditForm(props) {
       .catch((err) => {
         console.log(err);
       });
+      
+      
+      if(selected!==props.catId){
+        fetch('http://localhost:8080/edit-task-category/'+`${props.tid}`,{
+          method: 'PUT',
+          body: JSON.stringify(reqBodyCat),
+          headers : {
+            'Content-Type' : 'application/json'
+          }
+        }).then(res => {
+          return res.json()
+        }).then(data => {
+          console.log(data)
+        }).catch(err => console.log(err))
+      }
 
       cancelHandler();
   }
@@ -100,7 +124,7 @@ function EditForm(props) {
           <td>
         <label htmlFor="category"><p className={regclasses.p}><b>Category</b></p></label></td>
         <td>
-        <select className={regclasses.inputField} id="categories" name="categories" ref={selectedItem}>
+        <select defaultValue={props.catId} className={regclasses.inputField} id="categories" name="categories" ref={selectedItem}>
             {categories.map((category) => (
               <option key={category._id} value={category._id}>{category.title}</option>
             ))}

@@ -11,6 +11,8 @@ function CategoryForm(props) {
     props.onclick();
   }
 
+  const userId = props.userId;
+
   function submitHandler(event) {
     const title = enteredTitle.current.value;
 
